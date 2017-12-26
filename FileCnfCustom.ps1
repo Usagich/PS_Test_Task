@@ -14,10 +14,10 @@ Configuration CustomFile
 
         FileChecker MyCheck
         {
-            path = "C:\test\1.txt"
+            path = "c:\test\1.txt"
         }
 
     }
 }
 CustomFile
-Start-DscConfiguration CustomFile -Force
+Start-DscConfiguration CustomFile -Force -Wait -Verbose
