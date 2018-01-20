@@ -10,24 +10,20 @@
     
     Import-DscResource -ModuleName PsDesiredStateConfiguration
 
-    Node $ComputerName 
-    {  
-        WindowsFeature NetFramework
-        {
-            Ensure = "Present" 
-            Name = "NET-Framework-45-Core"
-        }
-        File FileContent 
-        {
-            Ensure = "Present"
-            DestinationPath = $path + $fileName
-            Contents = $fileContent
-        }
-        Log LoggingForCopy
-        {
-            Message = "Trying to put variables"
-            DependsOn = "[File]FileContent"
-        }
-
+    WindowsFeature NetFramework
+    {
+        Ensure = "Present" 
+        Name = "NET-Framework-45-Core"
+    }
+    File FileContent 
+    {
+        Ensure = "Present"
+        DestinationPath = $path + $fileName
+        Contents = $fileContent
+    }
+    Log LoggingForCopy
+    {
+        Message = "Trying to put variables"
+        DependsOn = "[File]FileContent"
     }
 }
